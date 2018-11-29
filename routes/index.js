@@ -11,6 +11,12 @@ router.get('/login',(req, res, next)=>{
 })
 
 router.get('/register',(req, res ,next)=>{
+
   res.render('register',{title: "register"});
+})
+
+router.post('/register',(req, res, next)=>{
+    console.log(JSON.stringify(req.body));
+
 })
 module.exports = router;
