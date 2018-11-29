@@ -1,6 +1,7 @@
 const Controller = require('../controller');
 const EncryptService = require('../../services/encryptService');
 const UserModel = require('../../models/userModel');
+const UUidHelper = require('../../helpers/UUidHelper');
 
 class registerController extends  Controller{
 
@@ -12,13 +13,23 @@ class registerController extends  Controller{
         this.res.render('register',{title:"register"});
     }
 
-    register(){
-        let pass = this.req.body.pass;
-        let passEnc = EncryptService.encryptPass(pass);
-        let userModel = new UserModel();
-        userModel.insert('djkdlj');
+    async register(){
+        let user = {};
+        user['username'] = this.req.body.username;
+        user.email = this.req.body.email;
+        user.pass = EncryptService.encryptPass(this.req.body.pass);
+        user.active = 0;
+        user.hash=UUidHelper.getUUid(3,4);
+        console.log(JSON.stringify(user));
+        try {
 
-        console.log("password ->" + pass, " Encryptado ->" + passEnc);
+            let userModel = new UserModel();
+            let result = await userModel.insert(user);
+        }catch(error){
+            console.log(error);
+        }
+
+
     }
 }
 
