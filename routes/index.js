@@ -17,7 +17,8 @@ router.get('/register',(req, res ,next)=>{
 })
 
 router.post('/register',(req, res, next)=>{
-    console.log(JSON.stringify(req.body));
+    let registerController = new RegisterController(req, res ,next);
+    registerController.register();
 
 })
 module.exports = router;

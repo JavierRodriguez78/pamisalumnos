@@ -9,6 +9,10 @@ class registerController extends  Controller{
     index(){
         this.res.render('register',{title:"register"});
     }
+
+    register(){
+
+    }
 }
 
 module.exports = registerController;
