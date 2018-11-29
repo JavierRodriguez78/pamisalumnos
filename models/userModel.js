@@ -15,6 +15,16 @@ class UserModel{
             })
         })
     }
+    getUserByEmail(email){
+        return new Promise((res, rej)=>{
+            if(!this.Conn) rej("No se ha podido crear la conexión");
+            let SQL = 'SELECT * from users where email="'+ email +'"';
+            this.Conn.query(SQL,(err, result)=>{
+                if(err) return rej(err);
+                else return res(result);
+            })
+        })
+    }
 }
 
 module.exports= UserModel;
