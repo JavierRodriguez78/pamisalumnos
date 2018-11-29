@@ -25,6 +25,8 @@ class registerController extends  Controller{
 
             let userModel = new UserModel();
             let result = await userModel.insert(user);
+            console.log(result.insertId);
+
         }catch(error){
             console.log(error);
         }

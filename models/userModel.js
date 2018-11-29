@@ -11,7 +11,7 @@ class UserModel{
             let SQL = 'INSERT INTO users SET ?';
             this.Conn.query(SQL,[user],(err, result)=>{
                 if(err) return rej(err);
-                else return res(result.id);
+                else return res(result);
             })
         })
     }
