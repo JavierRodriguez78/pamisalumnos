@@ -1,5 +1,7 @@
 const Controller = require('../controller');
 const EncryptService = require('../../services/encryptService');
+const UserModel = require('../../models/userModel');
+
 class registerController extends  Controller{
 
     constructor (req, res ,next){
@@ -13,6 +15,9 @@ class registerController extends  Controller{
     register(){
         let pass = this.req.body.pass;
         let passEnc = EncryptService.encryptPass(pass);
+        let userModel = new UserModel();
+        userModel.insert('djkdlj');
+
         console.log("password ->" + pass, " Encryptado ->" + passEnc);
     }
 }

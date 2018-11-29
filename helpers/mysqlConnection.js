@@ -5,7 +5,7 @@ class mysqlConnection
     static getConnection(){
         return Mysql.createConnection({
             host:'localhost',
-            user: 'root',
+            user: 'root1',
             password:'4486571',
             database:'pruebacon'
         })
