@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const RegisterController = require('../controllers/auth/registerController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,8 +12,8 @@ router.get('/login',(req, res, next)=>{
 })
 
 router.get('/register',(req, res ,next)=>{
-
-  res.render('register',{title: "register"});
+  let registerController = new RegisterController(req, res ,next);
+  registerController.index();
 })
 
 router.post('/register',(req, res, next)=>{
