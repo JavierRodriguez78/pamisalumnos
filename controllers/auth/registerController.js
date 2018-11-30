@@ -14,8 +14,9 @@ class registerController extends  Controller{
             this.res.render('register',{error: this.req.flash.error});
             this.req.flash.error=null;
 
+        }else{
+            this.res.render('register',{title:"register"});
         }
-        this.res.render('register',{title:"register"});
     }
 
     async register(){

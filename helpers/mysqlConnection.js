@@ -1,13 +1,13 @@
 const Mysql = require('mysql');
-
+const ConfigEm = require('../config');
 class mysqlConnection
 {
     static getConnection(){
         return Mysql.createConnection({
-            host:'localhost',
-            user: 'root',
-            password:'44865710',
-            database:'pruebacon'
+            host:ConfigEm.mysql.host,
+            user: ConfigEm.mysql.user,
+            password:ConfigEm.mysql.password,
+            database: ConfigEm.mysql.database
         })
     }
 }
