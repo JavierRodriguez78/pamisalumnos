@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const Hbs = require('hbs');
 const HbsUtils = require('hbs-utils')(Hbs);
+const Session = require('express-session');
+const Flash = require('connect-flash');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -19,6 +21,17 @@ HbsUtils.registerWatchedPartials(`${__dirname}/views/partials`);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
+//Gestión de la sesión.
+app.use(Session({
+    secret: 'app',
+    name:'coockieapp',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(Flash());
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
