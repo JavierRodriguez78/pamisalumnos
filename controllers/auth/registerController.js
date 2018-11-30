@@ -41,7 +41,7 @@ class registerController extends  Controller{
                 let result = await userModel.insert(user);
                 let emailService = new EmailService();
                 let resultEmail = await emailService.sendRegisterEmail(user);
-                this.res.render('/');
+                this.res.redirect('/');
             }
 
         }catch(error){

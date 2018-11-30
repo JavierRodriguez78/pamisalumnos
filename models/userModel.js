@@ -36,6 +36,17 @@ class UserModel{
             })
         })
     }
+
+    getUserByHash(hash){
+        return new Promise((res,rej)=>{
+            if(!this.Conn) rej ("No se ha podido crear la conexión");
+            let SQL= 'SELECT * FROM users where hash="'+hash+'"';
+            this.Conn.query(SQL, (error, result)=>{
+                if(error) return rej(error);
+                else return res(result);
+            })
+        })
+    }
 }
 
 module.exports= UserModel;
