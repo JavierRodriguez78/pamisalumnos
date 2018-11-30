@@ -47,6 +47,17 @@ class UserModel{
             })
         })
     }
+
+    setActiveUser(id){
+        return new Promise((res,rej)=>{
+            if(!this.Conn) rej("No se ha podido crear la conexión");
+            let SQL= 'UPDATE users set active = 1, hash = "" where id ='+id;
+            this.Conn.query(SQL, (error, result)=>{
+                if(error) return rej(error);
+                else return res(result);
+            })
+        })
+    }
 }
 
 module.exports= UserModel;
