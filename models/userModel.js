@@ -25,6 +25,17 @@ class UserModel{
             })
         })
     }
+
+    getUserByUserName(username){
+        return new Promise((res, rej)=>{
+            if(!this.Conn) rej ("No se ha podido crear la conexión");
+            let SQL = 'SELECT * from users where username="'+username+'"';
+            this.Conn.query(SQL,(error, result)=>{
+                if(error) return rej(error);
+                else return res(result);
+            })
+        })
+    }
 }
 
 module.exports= UserModel;
