@@ -3,10 +3,18 @@
         <a class="nav-link" href="/">Home</a>
 
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/register">REGISTER</a>
-    </li>
+    {{#unless username}}
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/register">REGISTER</a>
+        </li>
+    {{/unless}}
+    {{#if username}}
+        <li class="nav-item">
+            <a class="nav-link" href="/closeSession">{{username}}</a>
+        </li>
+    {{/if}}
+
 </ul>
